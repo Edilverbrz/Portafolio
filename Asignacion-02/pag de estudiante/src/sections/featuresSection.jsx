@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import FeatureCard from '../components/FeatureCard';
+import FeatureCard from '../components/featurecard';
 
 const FeaturesSection = ({ proyectos, habilidades }) => {
   const [activeTab, setActiveTab] = useState('todos');

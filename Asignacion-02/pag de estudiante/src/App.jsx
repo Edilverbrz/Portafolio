@@ -1,10 +1,10 @@
 import React from 'react';
 
 // IMPORTACIÓN DE COMPONENTES DESDE SUS CARPETAS INDIVIDUALES
-import Header from './layouts/Header';
-import Hero from './pages/Hero';
-import FeaturesSection from './sections/FeaturesSection';
-import Footer from './layouts/Footer';
+import Header from './layouts/header';
+import Hero from './pages/hero';
+import FeaturesSection from './sections/featuresSection';
+import Footer from './layouts/footer';
 
 export default function App() {
   const studentName = "Edilver A. Brizon R.";

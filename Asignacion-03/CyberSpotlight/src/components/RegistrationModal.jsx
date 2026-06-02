@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { TEMPLATES_DATA } from '../data/landingData';
+import { TEMPLATES_DATA } from '../data/LandingData';
 
 export const RegistrationModal = ({ isOpen, onClose, selectedStyle }) => {
   const [email, setEmail] = useState('');

@@ -1,5 +1,5 @@
 import React from 'react';
-import { TEMPLATES_DATA } from '../data/landingData';
+import { TEMPLATES_DATA } from '../data/LandingData';
 
 export const InteractiveSelector = ({ selectedStyle, onSelectStyle, onRegister }) => {
   const activeTemplate = TEMPLATES_DATA.find(t => t.id === selectedStyle) || TEMPLATES_DATA[0];

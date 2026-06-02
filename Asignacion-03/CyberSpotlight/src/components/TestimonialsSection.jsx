@@ -1,5 +1,5 @@
 import React from 'react';
-import { TESTIMONIALS_DATA } from '../data/landingData';
+import { TESTIMONIALS_DATA } from '../data/LandingData';
 
 export const TestimonialsSection = () => {
   return (

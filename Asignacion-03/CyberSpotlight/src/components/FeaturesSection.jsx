@@ -1,6 +1,6 @@
 import React from 'react';
 import { FeatureCard } from './FeatureCard';
-import { FEATURES_DATA } from '../data/landingData';
+import { FEATURES_DATA } from '../data/LandingData';
 
 export const FeaturesSection = () => {
   return (
