@@ -5,7 +5,7 @@ import path from 'path'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/Portafolio/', // 🌟 ESTA ES LA LÍNEA QUE DEBES AGREGAR
+  base: '/Portafolio/Asignacion-02/pag de estudiante/dist/',
   plugins: [
     react(),
     tailwindcss(), // <-- 2. Añadimos Tailwind a los plugins
