@@ -4,12 +4,12 @@ import miFoto from '../assets/edilver_brizon.jpeg';
 
 const Hero = ({ nombre, carrera, whatsappUrl }) => {
   return (
-    <section className="relative overflow-hidden bg-slate-950 py-20 px-6">
+    <section className="relative overflow-hidden w-full min-h-[80vh] flex items-center justify-center py-20 px-4 md:px-8 mx-auto bg-slate-950">
       {/* Elementos Decorativos de Fondo */}
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
       <div className="absolute bottom-10 right-1/4 w-80 h-80 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12 relative z-10">
+      <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-8 items-center relative z-10">
         
         {/* Textos de Presentación */}
         <div className="flex-1 text-center md:text-left">
@@ -18,7 +18,7 @@ const Hero = ({ nombre, carrera, whatsappUrl }) => {
           </div>
           
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-white leading-tight">
-            Hola, soy <br />
+            <span className="text-white">Hola, soy</span> <br />
             <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-400 via-blue-500 to-indigo-400">
               {nombre}
             </span>

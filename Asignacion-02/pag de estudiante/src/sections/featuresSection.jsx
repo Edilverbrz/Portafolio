@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import FeatureCard from '../components/featurecard';
+import { PROYECTOS_DATA, HABILIDADES_DATA } from '../data';
 
-const FeaturesSection = ({ proyectos, habilidades }) => {
+const FeaturesSection = () => {
   const [activeTab, setActiveTab] = useState('todos');
 
   const getSkillIcon = (skillName) => {
@@ -75,98 +76,78 @@ const FeaturesSection = ({ proyectos, habilidades }) => {
   };
 
   return (
-    <section className="bg-slate-900/40 py-20 px-6 border-y border-slate-800/60">
-      <div className="max-w-6xl mx-auto">
-        
-        {/* Cabecera de la Sección */}
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-white">
-            Explora mi <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-400 to-sky-400">Trayectoria</span>
-          </h2>
-          <p className="text-slate-400 mt-4">
-            A continuación, puedes filtrar y revisar los proyectos destacados que he desarrollado y las tecnologías que forman parte de mi caja de herramientas tecnológicas diarias.
-          </p>
-        </div>
+    <section id="proyectos" className="w-full min-h-screen bg-transparent py-12 px-4 md:px-8 mx-auto flex flex-col items-center">
+      <div className="w-full max-w-6xl text-center mb-8">
+        <p className="text-sm uppercase tracking-[0.3em] text-sky-400 mb-4">Sección</p>
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight">
+          <span className="text-white">Explora mi</span> <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-400 to-cyan-300">Trayectoria</span>
+        </h2>
+        <p className="text-slate-400 mt-5 text-base sm:text-lg leading-8">
+          Revisa mis proyectos destacados, descubre las tecnologías que domino y explora cómo aplico mis habilidades en soluciones reales.
+        </p>
+      </div>
 
-        {/* Tabs de Filtro */}
-        <div className="flex justify-center mb-12">
-          <div className="inline-flex p-1.5 rounded-xl bg-slate-950 border border-slate-800">
-            <button
-              onClick={() => setActiveTab('todos')}
-              className={`px-5 py-2.5 rounded-lg text-sm font-bold transition-all duration-300 ${
-                activeTab === 'todos' 
-                  ? 'bg-blue-600 text-white shadow-md shadow-blue-500/10' 
-                  : 'text-slate-400 hover:text-white'
-              }`}
-            >
-              Ver Todo
-            </button>
-            <button
-              onClick={() => setActiveTab('proyectos')}
-              className={`px-5 py-2.5 rounded-lg text-sm font-bold transition-all duration-300 ${
-                activeTab === 'proyectos' 
-                  ? 'bg-blue-600 text-white shadow-md shadow-blue-500/10' 
-                  : 'text-slate-400 hover:text-white'
-              }`}
-            >
-              Proyectos
-            </button>
-            <button
-              onClick={() => setActiveTab('habilidades')}
-              className={`px-5 py-2.5 rounded-lg text-sm font-bold transition-all duration-300 ${
-                activeTab === 'habilidades' 
-                  ? 'bg-blue-600 text-white shadow-md shadow-blue-500/10' 
-                  : 'text-slate-400 hover:text-white'
-              }`}
-            >
-              Habilidades
-            </button>
+      <div className="flex flex-row flex-wrap justify-center gap-4 md:gap-6 mb-10 w-full">
+        <button
+          onClick={() => setActiveTab('todos')}
+          className={`px-4 py-2 rounded-2xl text-sm font-semibold transition-all duration-300 ${
+            activeTab === 'todos'
+              ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/20'
+              : 'bg-slate-900/80 text-slate-300 hover:text-white hover:bg-slate-800'
+          }`}
+        >
+          Ver Todo
+        </button>
+        <button
+          onClick={() => setActiveTab('proyectos')}
+          className={`px-4 py-2 rounded-2xl text-sm font-semibold transition-all duration-300 ${
+            activeTab === 'proyectos'
+              ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/20'
+              : 'bg-slate-900/80 text-slate-300 hover:text-white hover:bg-slate-800'
+          }`}
+        >
+          Proyectos
+        </button>
+        <button
+          onClick={() => setActiveTab('habilidades')}
+          className={`px-4 py-2 rounded-2xl text-sm font-semibold transition-all duration-300 ${
+            activeTab === 'habilidades'
+              ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/20'
+              : 'bg-slate-900/80 text-slate-300 hover:text-white hover:bg-slate-800'
+          }`}
+        >
+          Habilidades
+        </button>
+      </div>
+
+      <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {(activeTab === 'todos' || activeTab === 'proyectos') && PROYECTOS_DATA.map((proyecto, idx) => (
+          <div key={`p-${idx}`} className="flex h-full">
+            <FeatureCard
+              type="project"
+              title={proyecto.nombre}
+              subtitle="Proyecto Destacado"
+              description={proyecto.descripcion}
+              tags={proyecto.tecnologias}
+              icon={getProjectIcon(proyecto.nombre)}
+              badge={proyecto.rol}
+            />
           </div>
-        </div>
+        ))}
 
-        {/* Rejilla de Contenido */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          
-          {/* SECCIÓN: PROYECTOS */}
-          {(activeTab === 'todos' || activeTab === 'proyectos') && (
-            <>
-              {proyectos.map((proyecto, idx) => (
-                <div key={`p-${idx}`} id="proyectos">
-                  <FeatureCard 
-                    type="project"
-                    title={proyecto.nombre}
-                    subtitle="Proyecto Destacado"
-                    description={proyecto.descripcion}
-                    tags={proyecto.tecnologias}
-                    icon={getProjectIcon(proyecto.nombre)}
-                    badge={proyecto.rol}
-                  />
-                </div>
-              ))}
-            </>
-          )}
-
-          {/* SECCIÓN: HABILIDADES */}
-          {(activeTab === 'todos' || activeTab === 'habilidades') && (
-            <>
-              {habilidades.map((hab, idx) => (
-                <div key={`h-${idx}`} id="habilidades">
-                  <FeatureCard 
-                    type="skill"
-                    title={hab.nombre}
-                    subtitle={hab.categoria}
-                    description={hab.descripcion}
-                    tags={hab.tags}
-                    icon={getSkillIcon(hab.nombre)}
-                    badge="Skill"
-                  />
-                </div>
-              ))}
-            </>
-          )}
-
-        </div>
-
+        {(activeTab === 'todos' || activeTab === 'habilidades') && HABILIDADES_DATA.map((hab, idx) => (
+          <div key={`h-${idx}`} className="flex h-full">
+            <FeatureCard
+              type="skill"
+              title={hab.nombre}
+              subtitle={hab.categoria}
+              description={hab.descripcion}
+              tags={hab.tags}
+              icon={getSkillIcon(hab.nombre)}
+              badge="Skill"
+            />
+          </div>
+        ))}
       </div>
     </section>
   );
